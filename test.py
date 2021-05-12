@@ -1,0 +1,6 @@
+N = int(input())
+S = input()
+SL = list(S)
+print("1", SL)
+print("2", SL[:N])
+print("3", SL[N:])
