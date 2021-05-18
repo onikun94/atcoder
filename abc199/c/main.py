@@ -11,13 +11,16 @@ for i in range(Q):
     B.append(b)
 
 Sl = list(S)
+left = Sl[:N]
+right = Sl[N:]
 
 for i in range(Q):
     if T[i] == 1:
-        Sl[A[i] - 1], Sl[B[i] - 1] = Sl[B[i] - 1], Sl[A[i] - 1]
+        left[A[i] - 1], right[B[i] - 1 - N] = right[B[i] - 1 - N], left[A[i] - 1]
     elif T[i] == 2:
-        Sl = Sl[N:] + Sl[:N]
-answer = ""
-for i in range(len(Sl)):
-    answer += Sl[i]
+        left, right = right, left
+        print(left)
+        print(right)
+Sl = left + right
+answer = "".join(Sl)
 print(answer)
