@@ -3,41 +3,46 @@ S = []
 for i in range(H):
     s = input()
     S.append(s)
+X = X - 1
+Y = Y - 1
 
-count = 0
-xp = X
-xm = X
-for i in range(W):
-    print("xp=", xp, "y=", Y)
-    print(S[xp - 1][Y - 1])
-    if xp - 1 <= W:
-        if S[xp - 1][Y - 1] == ".":
-            print()
-            xp = X + 1
-            count += 1
-        else:
-            break
-for i in range(W):
-    if xm - 1 > 0:
-        if S[xm - 1][Y - 1] == ".":
-            xm = X - 1
-            count += 1
-        else:
-            break
-yp = Y
-ym = Y
+curX = X
+curY = Y
+
+answer = 0
 for i in range(H):
-    if yp - 1 <= H:
-        if S[X - 1][yp - 1] == ".":
-            yp = Y + 1
-            count += 1
+    curX = curX - i
+    print("X=", curX, "Y=", curY)
+    if curX >= 0:
+        if S[curX][Y] == ".":
+            answer += 1
         else:
             break
-for i in range(H):
-    if ym - 1 > 0:
-        if S[X - 1][ym - 1] == ".":
-            ym = Y - 1
-            count += 1
+
+curX = X
+for i in range(1, H):
+    curX = curX + i
+    if curX < W:
+        if S[curX][Y] == ".":
+            answer += 1
         else:
             break
-print(count)
+
+for i in range(1, W):
+    curY = curY - i
+    if curY >= 0:
+        if S[X][curY] == ".":
+            answer += 1
+        else:
+            break
+
+curY = Y
+for i in range(1, W):
+    curY = curY + i
+    if curY < H:
+        if S[X][curY] == ".":
+            answer += 1
+        else:
+            break
+
+print(answer)
