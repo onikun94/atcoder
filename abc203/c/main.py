@@ -6,7 +6,7 @@ for i in range(N + 2):
 
 for i in range(N):
     A, B = map(int, input().split())
-    all.insert(A, all[A - 1] + B)
+
 
 print(all)
 
